@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="emailSender" class="EmailSender"/>
+    <bean id="senderService" class="SenderService">
+        <property name="isender" ref="emailSender"/>
+    </bean>
+    <bean id="notify" class="Notifier"/>
+    <aop:config>
+        <aop:aspect id="note" ref="notify">
+            <aop:pointcut id="bu" expression="execution(* * .sendMessage(..))"/>
+            <aop:before pointcut-ref="bu" method="notifyBefore"/>
+            <aop:after pointcut-ref="bu" method="notifyAfter"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
