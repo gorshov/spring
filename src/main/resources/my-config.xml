@@ -3,11 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="emailSender" class="EmailSender"/>
-    <bean id="senderService" class="SenderService">
+    <bean id="emailSender" class="lessons.first.EmailSender"/>
+    <bean id="senderService" class="lessons.first.SenderService">
         <property name="isender" ref="emailSender"/>
     </bean>
-    <bean id="notify" class="Notifier"/>
+    <bean id="notify" class="lessons.first.Notifier"/>
     <aop:config>
         <aop:aspect id="note" ref="notify">
             <aop:pointcut id="bu" expression="execution(* * .sendMessage(..))"/>
