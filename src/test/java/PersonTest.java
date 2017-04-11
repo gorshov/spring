@@ -1,3 +1,4 @@
+import lessons.second.Address;
 import lessons.second.Person;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -17,6 +18,14 @@ public class PersonTest {
         Person person = (Person) context.getBean("person");
         person.perform();
         log.info(person.getSurname());
+        /*((ClassPathXmlApplicationContext) context).destroy();*/
+        Address address = (Address) context.getBean(Address.class);
+        log.info("----------------------------------------------------");
+        log.info(address.getHome());
+        log.info(address.getStreet());
+        for (String result : address.getFlats()) {
+            log.info("flats number: " + result);
+        }
         ((ClassPathXmlApplicationContext) context).destroy();
     }
 }
