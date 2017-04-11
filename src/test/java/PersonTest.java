@@ -12,11 +12,11 @@ public class PersonTest {
 
     @Test
     public void getInstaceTest() {
+
         ApplicationContext context = new ClassPathXmlApplicationContext("second-config.xml");
         Person person = (Person) context.getBean("person");
         person.perform();
         log.info(person.getSurname());
-        log.info(person.getiAddress());
-        ((ClassPathXmlApplicationContext) context).close();
+        ((ClassPathXmlApplicationContext) context).destroy();
     }
 }

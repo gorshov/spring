@@ -3,7 +3,6 @@ package lessons.second;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import sun.rmi.runtime.Log;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -11,7 +10,7 @@ import javax.annotation.PreDestroy;
 /**
  * Created by Admin on 11.04.2017.
  */
-public class Person {
+public class Person implements InitializingBean, DisposableBean {
     private static Logger logger = Logger.getLogger(Person.class);
     private Long id;
     private String name;
@@ -20,10 +19,6 @@ public class Person {
 
     public IAddress getiAddress() {
         return iAddress;
-    }
-
-    public void init() {
-        logger.info(" initialization of Person");
     }
 
 
@@ -59,9 +54,29 @@ public class Person {
         System.out.println("Hello " + name);
     }
 
-
-    public void destroy() throws Exception {
-        logger.info("destroy Person finished");
+    public void initMethod() {
+        logger.info("Initialization Person xml-method");
     }
 
+    public void destroyMethod() {
+        logger.info("Destroy Person with xml-method");
+    }
+
+    @PreDestroy
+    public void destroyAnnotation() throws Exception {
+        logger.info("Destroy Person annotation method");
+    }
+
+    @PostConstruct
+    public void init() {
+        logger.info("Initialization of Person with annotation method");
+    }
+
+    public void destroy() throws Exception {
+        logger.info("Destroy Person implements method");
+    }
+
+    public void afterPropertiesSet() throws Exception {
+        logger.info("Initialization Person with implement method");
+    }
 }
