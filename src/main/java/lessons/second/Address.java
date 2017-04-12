@@ -2,7 +2,10 @@ package lessons.second;
 
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.MalformedParameterizedTypeException;
 import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Admin on 11.04.2017.
@@ -14,6 +17,35 @@ public class Address implements IAddress {
     private String street;
     private Long home;
     private Collection<String> flats;
+    private Set<Object> dwellers;
+    private Map<String, Person> personMap;
+
+    public Map<String, Person> getPersonMap() {
+        return personMap;
+    }
+
+    public void setPersonMap(Map<String, Person> personMap) {
+        this.personMap = personMap;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", home=" + home +
+                ", flats=" + flats +
+                ", dwellers=" + dwellers +
+                ", personMap=" + personMap +
+                '}';
+    }
+
+    public Set<Object> getDwellers() {
+        return dwellers;
+    }
+
+    public void setDwellers(Set<Object> dwellers) {
+        this.dwellers = dwellers;
+    }
 
     public Collection<String> getFlats() {
         return flats;

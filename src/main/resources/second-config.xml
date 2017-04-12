@@ -7,6 +7,8 @@
     <context:annotation-config/>
     <bean id="person" class="lessons.second.Person" scope="singleton" p:id="1" p:name="James" p:surname="Hatfield"
           p:iAddress-ref="address"/>
+    <bean id="person1" class="lessons.second.Person" scope="prototype" p:id="2" p:name="Ulric" p:surname="NoName"
+          p:iAddress-ref="address"/>
     <!--<property name="id" value="1"/>
     <property name="name" value="James"/>
     <property name="surname" value="Hatfield"/>
@@ -14,7 +16,7 @@
         <bean class="lessons.second.Address"/>
     </property>-->
 
-    <bean id="address" class="lessons.second.Address" scope="singleton" p:id="1" p:street="bla-bla" p:home="5">
+    <bean id="address" class="lessons.second.Address" scope="prototype" p:id="1" p:street="bla-bla" p:home="5">
         <property name="flats">
             <list>
                 <value>1</value>
@@ -22,6 +24,26 @@
                 <value>3</value>
                 <value>4</value>
             </list>
+        </property>
+        <property name="dwellers">
+            <set>
+                <value>1</value>
+                <value>person1</value>
+                <value>person</value>
+                <bean class="lessons.second.Person">
+                    <property name="id" value="1"/>
+                    <property name="name" value="Name"/>
+                    <property name="surname" value="Surname"/>
+                </bean>
+            </set>
+        </property>
+        <property name="personMap">
+            <map>
+                <entry key="1" value-ref="person"/>
+                <entry key="2" >
+                    <bean class="lessons.second.Person" p:id="2" p:name="Ulric" p:surname="NoName"/>
+                </entry>
+            </map>
         </property>
     </bean>
 

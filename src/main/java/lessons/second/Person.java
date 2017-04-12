@@ -7,6 +7,7 @@ import org.springframework.beans.factory.InitializingBean;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by Admin on 11.04.2017.
@@ -18,6 +19,14 @@ public class Person implements InitializingBean, DisposableBean {
     private String surname;
     private Address iAddress;
 
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 
     public IAddress getiAddress() {
         return iAddress;
