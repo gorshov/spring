@@ -1,65 +1,57 @@
 package lessons.second;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.Collection;
-import java.util.Set;
 
 /**
  * Created by Admin on 11.04.2017.
  */
+@Getter
+@Setter
+@Component
 public class Person implements InitializingBean, DisposableBean {
+
     private static Logger logger = Logger.getLogger(Person.class);
+    @Value("1")
     private Long id;
+    @Value("Kirk")
     private String name;
+    @Value("Hammet")
     private String surname;
-    private Address iAddress;
+    /*@Autowired*/
+    /*@Qualifier("companyAddress")
+    */
+    /*@Inject*/
+    /*@Company*/
+    /*@Named("secondAddress")*/
+    /*@Value("#{iAddress}")*/
+    @Autowired(required = false)
+    private IAddress iAddress;
 
-
+    /*private Address iAddress;*/
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", iAddress=" + iAddress +
                 '}';
     }
 
-    public IAddress getiAddress() {
+    /* public IAddress getiAddress() {
         return iAddress;
-    }
+    }*/
 
-
-    public void setiAddress(Address iAddress) {
-        this.iAddress = iAddress;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void perform() {
         System.out.println("Hello " + name);

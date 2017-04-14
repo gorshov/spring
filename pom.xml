@@ -10,6 +10,7 @@
     <properties>
         <spring.version>4.3.7.RELEASE</spring.version>
         <aspectj.version>1.8.4</aspectj.version>
+        <lombok.version>1.16.16</lombok.version>
     </properties>
 
     <dependencies>
@@ -39,10 +40,20 @@
             <version>${aspectj.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
         </dependency>
     </dependencies>
 

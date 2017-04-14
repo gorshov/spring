@@ -5,47 +5,54 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="initMethod" default-destroy-method="destroyMethod">
     <context:annotation-config/>
-    <bean id="person" class="lessons.second.Person" scope="singleton" p:id="1" p:name="James" p:surname="Hatfield"
-          p:iAddress-ref="address"/>
-    <bean id="person1" class="lessons.second.Person" scope="prototype" p:id="2" p:name="Ulric" p:surname="NoName"
-          p:iAddress-ref="address"/>
-    <!--<property name="id" value="1"/>
-    <property name="name" value="James"/>
-    <property name="surname" value="Hatfield"/>
-    <property name="iAddress">
-        <bean class="lessons.second.Address"/>
-    </property>-->
+    <context:component-scan base-package="lessons.second">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+        <context:exclude-filter type="assignable" expression="lessons.second.CompanyAddress"/>
+    </context:component-scan>
+    <!-- <bean id="person2" class="lessons.second.Person" scope="singleton" p:id="1" p:name="James" p:surname="Hatfield"
+     />
+     <bean id="person1" class="lessons.second.Person" scope="prototype" p:id="2" p:name="Ulric" p:surname="NoName"
+     />-->
 
-    <bean id="address" class="lessons.second.Address" scope="prototype" p:id="1" p:street="bla-bla" p:home="5">
-        <property name="flats">
-            <list>
-                <value>1</value>
-                <value>2</value>
-                <value>3</value>
-                <value>4</value>
-            </list>
-        </property>
-        <property name="dwellers">
-            <set>
-                <value>1</value>
-                <value>person1</value>
-                <value>person</value>
-                <bean class="lessons.second.Person">
-                    <property name="id" value="1"/>
-                    <property name="name" value="Name"/>
-                    <property name="surname" value="Surname"/>
-                </bean>
-            </set>
-        </property>
-        <property name="personMap">
-            <map>
-                <entry key="1" value-ref="person"/>
-                <entry key="2" >
-                    <bean class="lessons.second.Person" p:id="2" p:name="Ulric" p:surname="NoName"/>
-                </entry>
-            </map>
-        </property>
-    </bean>
+    <!-- <bean id="address" class="lessons.second.Address" scope="prototype" p:id="1" p:street="bla-bla" p:home="5"
+           >
+         <property name="flats">
+             <list>
+                 <value>1</value>
+                 <value>2</value>
+                 <value>3</value>
+                 <value>4</value>
+             </list>
+         </property>
+         <property name="dwellers">
+             <set>
+                 <value>1</value>
+                 <value>person1</value>
+                 <value>person</value>
+                 <bean class="lessons.second.Person">
+                     <property name="id" value="1"/>
+                     <property name="name" value="Name"/>
+                     <property name="surname" value="Surname"/>
+                 </bean>
+             </set>
+         </property>
+         <property name="personMap">
+             <map>
+                 <entry key="1" value-ref="person"/>
+                 <entry key="2">
+                     <bean class="lessons.second.Person" p:id="2" p:name="Ulric" p:surname="NoName"/>
+                 </entry>
+             </map>
+         </property>
+     </bean>
+    <bean class="lessons.second.Address" p:id="2" p:home="10" p:street="NotMyStreet"
+    />-->
 
-
+    <!--  <bean id="secondAddress" class="lessons.second.Address" p:id="3" p:home="15" p:street="ThisIsMyStreet"
+             scope="prototype"/>
+      <bean class="lessons.second.CompanyAddress" scope="prototype"
+            p:id="4" p:home="27" p:street="Second" p:email="mymail@mail.by">
+          &lt;!&ndash;<qualifier value="companyAddress"/>&ndash;&gt;
+      </bean>
+  -->
 </beans>

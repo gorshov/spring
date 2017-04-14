@@ -1,11 +1,8 @@
-import lessons.second.Address;
 import lessons.second.Person;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Map;
 
 /**
  * Created by Admin on 11.04.2017.
@@ -21,7 +18,7 @@ public class PersonTest {
         person.perform();
         log.info(person.getSurname());
         /*((ClassPathXmlApplicationContext) context).destroy();*/
-        Address address = (Address) context.getBean("address");
+        /*Address address = (Address) context.getBean("address");
         log.info("----------------------------------------------------");
         log.info(address.getHome());
         log.info(address.getStreet());
@@ -35,8 +32,8 @@ public class PersonTest {
 
         for (Map.Entry<String, Person> entry : address.getPersonMap().entrySet()) {
             log.info(entry.getKey() + " : - " + entry.getValue().getName());
-        }
-        log.info(address);
+        }*/
+        log.info(person);
         ((ClassPathXmlApplicationContext) context).destroy();
     }
 }
