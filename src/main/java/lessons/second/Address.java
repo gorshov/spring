@@ -25,9 +25,9 @@ public class Address implements IAddress {
     private String street;
     @Value("42")
     private Long home;
-    private Collection<String> flats;
+  /*  private Collection<String> flats;
     private Set<Object> dwellers;
-    private Map<String, Person> personMap;
+    private Map<String, Person> personMap;*/
 
     public Address() {
     }
@@ -35,11 +35,9 @@ public class Address implements IAddress {
     @Override
     public String toString() {
         return "Address{" +
-                "street='" + street + '\'' +
+                "id=" + id +
+                ", street='" + street + '\'' +
                 ", home=" + home +
-                ", flats=" + flats +
-                ", dwellers=" + dwellers +
-                ", personMap=" + personMap +
                 '}';
     }
 

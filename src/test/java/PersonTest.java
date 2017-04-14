@@ -13,26 +13,10 @@ public class PersonTest {
     @Test
     public void getInstaceTest() {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("second-config.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("three-config.xml");
         Person person = (Person) context.getBean("person");
         person.perform();
         log.info(person.getSurname());
-        /*((ClassPathXmlApplicationContext) context).destroy();*/
-        /*Address address = (Address) context.getBean("address");
-        log.info("----------------------------------------------------");
-        log.info(address.getHome());
-        log.info(address.getStreet());
-        for (String result : address.getFlats()) {
-            log.info("flats number: " + result);
-        }
-
-        for (Object res : address.getDwellers()) {
-            log.info("Dwellers: " + res);
-        }
-
-        for (Map.Entry<String, Person> entry : address.getPersonMap().entrySet()) {
-            log.info(entry.getKey() + " : - " + entry.getValue().getName());
-        }*/
         log.info(person);
         ((ClassPathXmlApplicationContext) context).destroy();
     }

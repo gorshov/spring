@@ -2,13 +2,13 @@ package lessons.second;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Admin on 14.04.2017.
  */
 @Getter
 @Setter
-@Company
 public class CompanyAddress implements IAddress {
     private Long id;
     private Long home;

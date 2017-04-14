@@ -9,12 +9,12 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
         <context:exclude-filter type="assignable" expression="lessons.second.CompanyAddress"/>
     </context:component-scan>
-    <!-- <bean id="person2" class="lessons.second.Person" scope="singleton" p:id="1" p:name="James" p:surname="Hatfield"
+     <bean id="person2" class="lessons.second.Person" scope="singleton" p:id="1" p:name="James" p:surname="Hatfield"
      />
      <bean id="person1" class="lessons.second.Person" scope="prototype" p:id="2" p:name="Ulric" p:surname="NoName"
-     />-->
+     />
 
-    <!-- <bean id="address" class="lessons.second.Address" scope="prototype" p:id="1" p:street="bla-bla" p:home="5"
+     <!--<bean id="address" class="lessons.second.Address" scope="prototype" p:id="1" p:street="bla-bla" p:home="5"
            >
          <property name="flats">
              <list>
@@ -44,15 +44,14 @@
                  </entry>
              </map>
          </property>
-     </bean>
+     </bean>-->
     <bean class="lessons.second.Address" p:id="2" p:home="10" p:street="NotMyStreet"
-    />-->
+    />
 
-    <!--  <bean id="secondAddress" class="lessons.second.Address" p:id="3" p:home="15" p:street="ThisIsMyStreet"
+      <bean id="secondAddress" class="lessons.second.Address" p:id="3" p:home="15" p:street="ThisIsMyStreet"
              scope="prototype"/>
       <bean class="lessons.second.CompanyAddress" scope="prototype"
             p:id="4" p:home="27" p:street="Second" p:email="mymail@mail.by">
-          &lt;!&ndash;<qualifier value="companyAddress"/>&ndash;&gt;
+          <!--<qualifier value="companyAddress"/>-->
       </bean>
-  -->
 </beans>

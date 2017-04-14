@@ -17,7 +17,7 @@ import javax.annotation.PreDestroy;
  */
 @Getter
 @Setter
-@Component
+@Component("person")
 public class Person implements InitializingBean, DisposableBean {
 
     private static Logger logger = Logger.getLogger(Person.class);
@@ -27,12 +27,7 @@ public class Person implements InitializingBean, DisposableBean {
     private String name;
     @Value("Hammet")
     private String surname;
-    /*@Autowired*/
-    /*@Qualifier("companyAddress")
-    */
-    /*@Inject*/
-    /*@Company*/
-    /*@Named("secondAddress")*/
+
     /*@Value("#{iAddress}")*/
     @Autowired(required = false)
     private IAddress iAddress;
@@ -48,9 +43,9 @@ public class Person implements InitializingBean, DisposableBean {
                 '}';
     }
 
-    /* public IAddress getiAddress() {
+     public IAddress getiAddress() {
         return iAddress;
-    }*/
+    }
 
 
     public void perform() {
